@@ -9,6 +9,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+$stats_foundry_config = YAML.load_file("config/stats_foundry.yml")[Rails.env].symbolize_keys
+
 module StatsFoundry
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -44,5 +46,8 @@ module StatsFoundry
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.action_view.field_error_proc = proc {|html, instance| html }
+    config.action_mailer.default_url_options  = { :host => $stats_foundry_config[:host] }
   end
 end

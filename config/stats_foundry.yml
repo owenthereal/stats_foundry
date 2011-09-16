@@ -1,0 +1,8 @@
+development: &DEVELOPMENT
+  host: localhost
+
+test:
+  <<: *DEVELOPMENT
+
+production:
+  host: statsfoundry.com

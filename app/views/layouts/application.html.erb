@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>StatsFoundry</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= t(:title) %><%= content_for?(:subtitle) ? " - #{yield(:subtitle)}" : "" %> </title>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
+    <%= stylesheet_link_tag    "application"%>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body style="padding-top: 50px;">
+    <div class="topbar">
+      <div class="fill">
+        <div class="container fixed">
+          <h3><a href="#">StatsFoundary</a></h3>
+          <%# <ul>%>
+            <%#   <li class="active"><a href="#">Home</a></li>%>
+            <%#   <li><a href="#about">About</a></li>%>
+            <%#   <li><a href="#contact">Contact</a></li>%>
+            <%# </ul>%>
+        </div>
+      </div>
+    </div>
 
-<%= yield %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
 
-</body>
+      <%= yield %>
+
+      <footer>
+      <p>&copy; Company 2011</p>
+      </footer>
+    </div>
+
+  </body>
 </html>
