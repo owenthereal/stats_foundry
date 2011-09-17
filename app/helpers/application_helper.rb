@@ -39,4 +39,8 @@ module ApplicationHelper
       link_to("x", "#", :class => "close") + content_tag(:p, content_tag(:strong, value))
     end
   end
+
+  def sign_in_path?
+    request.fullpath == new_session_path || request.fullpath == sign_in_path
+  end
 end

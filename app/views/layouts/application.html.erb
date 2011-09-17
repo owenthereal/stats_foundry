@@ -10,16 +10,7 @@
   </head>
   <body style="padding-top: 50px;">
     <div class="topbar">
-      <div class="fill">
-        <div class="container fixed">
-          <h3><%= link_to t(:title), root_path %></h3>
-          <ul class="nav secondary-nav">
-            <li>
-               <%= content_for?(:nav) ? yield(:nav) : link_to("Sign in", new_session_path) %>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <%= render :partial => 'toolbar' %>
     </div>
 
     <div class="container">

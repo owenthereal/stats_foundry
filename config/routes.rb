@@ -58,13 +58,13 @@ StatsFoundry::Application.routes.draw do
 
   root :to => 'sessions#new'
 
-  resource  :session,
-    :controller => 'sessions',
-    :only       => [:new, :create, :destroy]
+  resource :session, :controller => 'sessions', :only => [:new, :create, :destroy]
 
   resources :users, :controller => 'users', :only => [:new, :create] do
-    resource :password,
-      :controller => 'clearance/passwords',
-      :only       => [:create, :edit, :update]
+    resource :password, :controller => 'clearance/passwords', :only => [:create, :edit, :update]
   end
+
+  match 'sign_up'  => 'users#new', :as => 'sign_up'
+  match 'sign_in'  => 'sessions#new', :as => 'sign_in'
+  match 'sign_out' => 'sessions#destroy', :via => :delete, :as => 'sign_out'
 end
