@@ -5,12 +5,13 @@ module ApplicationHelper
 
     input_field = content_tag(:div, :class => 'input') do
       html = form.send(type, field, :class => "xlarge #{error_style}")
-      html += content_tag(:span, error_message, :class => 'help-inline') if error_message
+      html += content_tag(:span, "#{field.to_s.titleize} #{error_message}", :class => 'help-inline') if error_message
       html
     end
 
+    label_name = options.delete(:label_name) || field
     label_field = form.label(field) do
-      field.to_s.titleize
+      label_name.to_s.titleize
     end
 
     content_tag(:div, :class => "clearfix #{error_style}") do
