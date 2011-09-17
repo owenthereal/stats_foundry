@@ -6,4 +6,8 @@ en:
 
   users:
     new:
-      subtitle: "Sign Up"
+      subtitle: "Sign up"
+
+  sessions:
+    new:
+      subtitle: "Sign in"

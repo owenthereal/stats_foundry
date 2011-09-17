@@ -55,4 +55,14 @@ StatsFoundry::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  resource  :session,
+    :controller => 'sessions',
+    :only       => [:new, :create, :destroy]
+
+  resources :users, :controller => 'users', :only => [:new, :create] do
+    resource :password,
+      :controller => 'clearance/passwords',
+      :only       => [:create, :edit, :update]
+  end
 end

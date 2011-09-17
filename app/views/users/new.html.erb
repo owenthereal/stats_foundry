@@ -1,76 +1,18 @@
 <% subtitle :subtitle %>
+
 <div class="row">
   <div class="span4">
     <h1>Sign up</h1>
-    <p>dddddd</p>
+    <p>You are signing up for a free StatsFoundry account</p>
   </div>
 
   <div class="span12">
+    <%= render :partial => '/application/flash', :object => flash %>
     <%= form_for @user do |form| %>
       <fieldset>
         <%= render :partial => '/users/form', :object => form %>
-        <div class="actions">
-          <%= button_tag 'Sign up', :class => "btn primary" %>
-        </div>
       </fieldset>
+      <%= buttons "primary" => "Create an account" %>
     <% end %>
   </div>
-
-  <%# <form action="">%>
-    <%#   <fieldset>%>
-      <%#     <div class="clearfix">%>
-        <%#       <label for="xlInput3">X-Large Input</label>%>
-        <%#       <div class="input">%>
-          <%#         <input class="xlarge" id="xlInput3" name="xlInput3" size="30" type="text">%>
-          <%#       </div>%>
-        <%#     </div>[> /clearfix <]%>
-      <%#     <div class="clearfix">%>
-        <%#       <label for="stackedSelect">Select</label>%>
-        <%#       <div class="input">%>
-          <%#         <select name="stackedSelect" id="stackedSelect">%>
-            <%#           <option>1</option>%>
-            <%#           <option>2</option>%>
-            <%#           <option>3</option>%>
-            <%#           <option>4</option>%>
-            <%#           <option>5</option>%>
-            <%#         </select>%>
-          <%#       </div>%>
-        <%#     </div>[> /clearfix <]%>
-      <%#   </fieldset>%>
-    <%#   <fieldset>%>
-      <%#     <legend>Example form legend</legend>%>
-      <%#     <div class="clearfix error">%>
-        <%#       <label for="xlInput4">X-Large Input</label>%>
-        <%#       <div class="input">%>
-          <%#         <input class="xlarge error" id="xlInput4" name="xlInput4" size="30" type="text">%>
-          <%#         <span class="help-inline">Small snippet of help text</span>%>
-          <%#       </div>%>
-        <%#     </div>[> /clearfix <]%>
-      <%#     <div class="clearfix">%>
-        <%#       <label id="optionsCheckboxes">List of Options</label>%>
-        <%#       <div class="input">%>
-          <%#         <ul class="inputs-list">%>
-            <%#           <li>%>
-            <%#           <label>%>
-              <%#             <input type="checkbox" name="optionsCheckboxes" value="option1">%>
-              <%#             <span>Option one is this and that—be sure to include why it’s great</span>%>
-              <%#           </label>%>
-            <%#           </li>%>
-            <%#           <li>%>
-            <%#           <label>%>
-              <%#             <input type="checkbox" name="optionsCheckboxes" value="option2">%>
-              <%#             <span>Option two can also be checked and included in form results</span>%>
-              <%#           </label>%>
-            <%#           </li>%>
-            <%#         </ul>%>
-          <%#         <span class="help-block">%>
-            <%#           <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.%>
-            <%#         </span>%>
-          <%#       </div>%>
-        <%#     </div>[> /clearfix <]%>
-      <%#   </fieldset>%>
-    <%#   <div class="actions">%>
-      <%#     <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>%>
-      <%#   </div>%>
-    <%# </form>%>
 </div>

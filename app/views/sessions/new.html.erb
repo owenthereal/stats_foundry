@@ -1,0 +1,19 @@
+<% subtitle :subtitle %>
+<div class="row">
+  <div class="span4">
+    <h1>Sign in</h1>
+    <p>You are signing in to StatsFoundry</p>
+  </div>
+
+  <div class="span12">
+    <%= render :partial => '/application/flash', :object => flash %>
+
+    <%= form_for :session, :url => session_path do |form| %>
+      <fieldset>
+        <%= field_for form, :email, :text_field %>
+        <%= field_for form, :password, :password_field %>
+      </fieldset>
+      <%= buttons "primary" => "Sign in" %>
+    <% end %>
+  </div>
+</div>

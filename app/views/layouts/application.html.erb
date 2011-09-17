@@ -13,26 +13,21 @@
       <div class="fill">
         <div class="container fixed">
           <h3><a href="#">StatsFoundary</a></h3>
-          <%# <ul>%>
-            <%#   <li class="active"><a href="#">Home</a></li>%>
-            <%#   <li><a href="#about">About</a></li>%>
-            <%#   <li><a href="#contact">Contact</a></li>%>
-            <%# </ul>%>
+          <ul class="nav secondary-nav">
+            <li>
+               <%= content_for?(:nav) ? yield(:nav) : link_to("Sign in", new_session_path) %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-
       <%= yield %>
 
       <footer>
-      <p>&copy; Company 2011</p>
+        <p>&copy; StatsFoundry.com 2011</p>
       </footer>
     </div>
-
   </body>
 </html>
