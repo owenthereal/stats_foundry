@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911055106) do
+ActiveRecord::Schema.define(:version => 20110917222927) do
+
+  create_table "columns", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "table_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "columns", ["id", "name"], :name => "index_columns_on_id_and_name"
+  add_index "columns", ["table_id"], :name => "index_columns_on_table_id"
+
+  create_table "tables", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tables", ["user_id"], :name => "index_tables_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

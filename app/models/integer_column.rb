@@ -1,0 +1,2 @@
+class IntegerColumn < Column
+end

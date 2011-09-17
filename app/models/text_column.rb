@@ -1,0 +1,3 @@
+class TextColumn < Column
+
+end
