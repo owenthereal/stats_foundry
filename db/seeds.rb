@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user = Factory(:user, :email => "owen.ou@statsfoundry.com", :password => "111111")
+table = Factory(:table, :user => user, :name => "StatsFoundary Analytics")
+{ "visited_at" => :date_time_column, "url" => :text_column, "ip" => :text_column }.each do |column_name, column_type|
+  Factory(column_type, :table => table, :name => column_name)
+end
