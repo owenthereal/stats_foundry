@@ -3,7 +3,6 @@ class Column < ActiveRecord::Base
 
   belongs_to :table, :dependent => :destroy
 
-  validates_presence_of :name
+  validates :name, :presence => true, :uniqueness => { :scope => [:table_id] }
   validates_inclusion_of :type, :in => TYPES
-
 end
