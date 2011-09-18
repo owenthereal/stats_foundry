@@ -1,3 +1,0 @@
-class TextColumn < Column
-
-end

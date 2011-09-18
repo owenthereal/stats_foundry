@@ -1,2 +1,0 @@
-class IntegerColumn < Column
-end

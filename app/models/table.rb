@@ -4,7 +4,13 @@ class Table < ActiveRecord::Base
 
   validates_presence_of :name
 
+  scope :with_columns, includes(:columns)
+
   def rows
-    @rows ||= Row.all_for(self)
+    @rows ||= row_proxy.all
+  end
+
+  def row_proxy
+    @row_proxy ||= RowProxy.of(self)
   end
 end

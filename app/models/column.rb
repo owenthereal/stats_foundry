@@ -1,5 +1,5 @@
 class Column < ActiveRecord::Base
-  TYPES = [ IntegerColumn.name, TextColumn.name, DateTimeColumn.name ]
+  TYPES = [ DateTimeColumn.name, NumberColumn.name, TextColumn.name ]
 
   belongs_to :table, :dependent => :destroy
 
