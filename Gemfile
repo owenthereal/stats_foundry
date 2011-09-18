@@ -34,11 +34,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ruby-debug19'
-  gem 'sqlite3'
+  gem 'thin'
 end
 
 group :development do
   gem 'heroku'
+  gem 'foreman'
 end
 
 group :test do
