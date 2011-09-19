@@ -5,12 +5,13 @@ module StatementParser
     class << self
       def parse(statement)
         match = REG_EXP.match(statement)
-        return nil unless match.present?
-
-        table_id = match[1].to_i
+        return nil unless match
 
         keys = split_entries(match[2])
         values = split_entries(match[3])
+        return nil unless keys.length == values.length
+
+        table_id = match[1].to_i
         raw_data = hash_from_pairs(keys, values)
 
         Statement::InsertRow.new(table_id, raw_data)
