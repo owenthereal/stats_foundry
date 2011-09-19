@@ -1,11 +1,11 @@
 module StatementValidator
   class InsertRow
     def validate(statement)
-      validate_table_exists(statement) && validate_column_definition(statement) && validate_column_type(statement)
+      validate_table_exists(statement) && validate_column_definition(statement)
     end
 
     def validate_table_exists(statement)
-      unless statement.table.present?
+      unless statement.table
         statement.errors << "Table #{statement.table_id} does not exist."
         return false
       end
@@ -14,7 +14,7 @@ module StatementValidator
     end
 
     def validate_column_definition(statement)
-      columns = statement.table.columns
+      columns = statement.columns
       column_names = columns.collect { |c| c.name }
       statement_colunns_names = statement.raw_data.keys
 
