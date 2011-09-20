@@ -2,11 +2,17 @@ class Query
   class InsertQuery < Query
     REG_EXP = /\AINSERT INTO (\d+) \((.+)\) VALUES \((.+)\);\z/i
 
-    def self.match?(query)
+    def self.parse?(query)
       REG_EXP =~ query
     end
 
     def validate
+      parse(statement)
+
+      # InsertQueryParser.parse => table_id, raw_data
+      # InsertQueryValidator.validate => table, columns
+      # InsertQueryTypeConvertor.convert => data
+      # InsertQueryExecutor.execute => Mongo
       validate_reg_exp ||
       validate_table_exists ||
       validate_number_of_columns ||

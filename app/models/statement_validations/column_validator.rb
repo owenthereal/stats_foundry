@@ -1,5 +1,5 @@
 module StatementValidations
-  class ColumnValidator < StatementValidator
+  class ColumnValidator < Base
     def validate(statement)
       column_names = Set.new(statement[:columns].collect { |c| c.name })
       statement_colunns_names = Set.new(statement[:row_data].keys)

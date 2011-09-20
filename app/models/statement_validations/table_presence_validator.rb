@@ -1,5 +1,5 @@
 module StatementValidations
-  class TablePresenceValidator < StatementValidator
+  class TablePresenceValidator < Base
     def validate(statement)
       table_id = statement[options[:table_id]]
       is_exist = Table.exists?(table_id)

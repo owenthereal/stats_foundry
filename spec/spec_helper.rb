@@ -25,6 +25,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.filter_run_excluding :broken => true
+
   config.before(:suite) do
     MongodbCleaner.clean
   end

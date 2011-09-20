@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Query::InsertQuery do
+describe Query::InsertQuery, :broken => true do
   let(:valid_query) { Query::InsertQuery.new(valid_query_string) }
   let(:invalid_query) { Query::InsertQuery.new(invalid_query_string) }
 

@@ -1,5 +1,5 @@
 module StatementValidations
-  class StatementValidator
+  class Base
     attr_reader :options
 
     def initialize(options)

@@ -8,9 +8,9 @@ describe StatementParser::InsertRow do
 
   it "parses valid query" do
     statement = parser.parse(valid_query_string)
-    statement.table_id.should == 274409
-    statement.raw_data.size.should == 2
-    { 'Product' => "'Red Shoes'", 'Inventory' => '25' }.each { |k, v| statement.raw_data[k].should == v }
+    statement[:table_id].should == 274409
+    statement[:row_data].size.should == 2
+    { 'Product' => "Red Shoes", 'Inventory' => 25 }.each { |k, v| statement[:row_data][k].should == v }
   end
 
   it "parses invalid query and reports errors" do

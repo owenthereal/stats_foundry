@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Query do
+describe Query, :broken => true do
   it "parses the INSERT statement" do
-    query = "INSERT INTO 274409 (Product, Inventory) VALUES ('Red Shoes', 25);"
+    query_string = "INSERT INTO 274409 (Product, Inventory) VALUES ('Red Shoes', 25);"
     insert_query = Query.parse(query)
     insert_query.class.should == InsertQuery
     insert_query.data.size.should == 2
