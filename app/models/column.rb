@@ -1,8 +1,19 @@
 class Column < ActiveRecord::Base
-  TYPES = [ DateTimeColumn.name, NumberColumn.name, TextColumn.name ]
+  TYPES = [ DateTimeColumn, NumberColumn, TextColumn ]
+  TYPE_NAMES = TYPES.collect(&:name)
 
   belongs_to :table, :dependent => :destroy
 
   validates :name, :presence => true, :uniqueness => { :scope => [:table_id] }
-  validates_inclusion_of :type, :in => TYPES
+  validates_inclusion_of :type, :in => TYPE_NAMES
+
+  def self.convert_data_types(values)
+    values.collect do |v|
+      converted_value = nil
+      TYPES.find do |t|
+        converted_value = t.convert(v)
+      end
+      converted_value || v
+    end
+  end
 end

@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:name) { |n| "column-#{n}" }
     table :factory => :table
 
-    Column::TYPES.each do |t|
+    Column::TYPE_NAMES.each do |t|
       factory t.underscore, :parent => :column do
         type { t }
       end

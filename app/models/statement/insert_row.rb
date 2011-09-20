@@ -1,24 +1,14 @@
 module Statement
-  class InsertRow
-    attr_reader :table_id, :raw_data, :data, :table, :columns
+  class InsertRow < Base
+    validates_with StatementValidations::TablePresenceValidator, :table_id => :table_id
+    validates_with StatementValidations::ColumnValidator, :columns => :columns, :row_data => :row_data
 
-    def initialize(table_id, raw_data)
-      @table_id = table_id
-      @raw_data = raw_data
-      @data = {}
-      @table = Table.with_columns.first(:conditions => { :id => table_id } )
-      @columns = @table ? @table.columns : []
-    end
+    def initialize(attributes = {})
+      super
 
-    def valid?
-      errors.clear
-      validate
-      convert_data_types
-      errors.any?
-    end
-
-    def execute
-      valid? ? execute! : false
+      raise "table_id and row_data are required" unless attributes[:table_id] && attributes[:row_data]
+      attributes[:table] = Table.with_columns.first(:conditions => { :id => attributes[:table_id] })
+      attributes[:columns] = attributes[:table].columns if attributes[:table]
     end
 
     def execute!

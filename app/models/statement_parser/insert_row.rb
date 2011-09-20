@@ -9,18 +9,19 @@ module StatementParser
 
         keys = split_entries(match[2])
         values = split_entries(match[3])
+        values = Column.convert_data_types(values)
         return nil unless keys.length == values.length
 
         table_id = match[1].to_i
-        raw_data = hash_from_pairs(keys, values)
+        row_data = hash_from_pairs(keys, values)
 
-        Statement::InsertRow.new(table_id, raw_data)
+        Statement::InsertRow.new(:table_id => table_id, :row_data => row_data)
       end
 
       private
 
       def split_entries(string)
-        string.split(',').collect { |k| k.strip }
+        string.split(',').collect(&:strip)
       end
 
       def hash_from_pairs(keys, values)
