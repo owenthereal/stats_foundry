@@ -13,6 +13,8 @@ class Column < ActiveRecord::Base
       TYPES.find do |t|
         converted_value = t.convert(v)
       end
+
+      # Returns the original value if it can't be converted
       converted_value || v
     end
   end

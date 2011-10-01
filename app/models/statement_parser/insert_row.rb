@@ -9,10 +9,10 @@ module StatementParser
 
         keys = split_entries(match[2])
         values = split_entries(match[3])
-        values = Column.convert_data_types(values)
         return nil unless keys.length == values.length
 
         table_id = match[1].to_i
+        values = Column.convert_data_types(values)
         row_data = hash_from_pairs(keys, values)
 
         Statement::InsertRow.new(:table_id => table_id, :row_data => row_data)
