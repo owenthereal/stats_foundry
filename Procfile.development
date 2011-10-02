@@ -1,3 +1,3 @@
 postgres: postgres -D ./db/postgres
 mongo: mongod run --dbpath ./db/mongodb --bind_ip 127.0.0.1
-web: bundle exec thin start
+web: bundle exec rails server thin
