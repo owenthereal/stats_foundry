@@ -7,7 +7,7 @@ gem "clearance"
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'thin'
+gem 'unicorn'
 gem 'pg'
 gem 'mongo_mapper'
 gem 'bson_ext'
