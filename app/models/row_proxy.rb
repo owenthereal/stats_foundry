@@ -10,10 +10,15 @@ class RowProxy
     end
 
     def create_proxy_class(collection_name)
-      proxy_class = Class.new do
-        include MongoMapper::Document
+      Class.new do
+        include Mongoid::Document
+
+        store_in collection_name.to_sym
+
+        def self.name
+          collection_name
+        end
       end
-      Object.const_set(collection_name, proxy_class)
     end
   end
 end

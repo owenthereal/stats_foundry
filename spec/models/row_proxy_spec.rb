@@ -10,8 +10,7 @@ describe RowProxy do
 
     it "constructs collection class" do
       proxy_class = RowProxy.of(table)
-      proxy_class.should == "Table_#{table[:id]}_Row".constantize
-      proxy_class.ancestors.should include(MongoMapper::Document)
+      proxy_class.ancestors.should include(Mongoid::Document)
 
       proxy_class.create("foo" => "bar")
       proxy_class.all.size.should == 1
