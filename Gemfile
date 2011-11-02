@@ -39,6 +39,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry'
   gem 'heroku'
   gem 'foreman'
 end
