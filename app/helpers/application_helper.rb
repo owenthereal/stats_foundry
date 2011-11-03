@@ -3,9 +3,9 @@ module ApplicationHelper
     error_message = form.object ? form.object.errors[field].first : nil
     error_style = error_message.nil? ? "" : "error"
 
-    input_field = content_tag(:div, :class => 'input') do
-      html = form.send(type, field, :class => "xlarge #{error_style}")
-      html += content_tag(:span, "#{field.to_s.titleize} #{error_message}", :class => 'help-inline') if error_message
+    input_field = content_tag(:div, class: 'input') do
+      html = form.send(type, field, class: "xlarge #{error_style}")
+      html += content_tag(:span, "#{field.to_s.titleize} #{error_message}", class: 'help-inline') if error_message
       html
     end
 
@@ -14,14 +14,14 @@ module ApplicationHelper
       label_name.to_s.titleize
     end
 
-    content_tag(:div, :class => "clearfix #{error_style}") do
+    content_tag(:div, class: "clearfix #{error_style}") do
       label_field + input_field
     end
   end
 
   def buttons(options = {})
-    content_tag(:div, :class => "actions") do
-      options.collect { |key, value| button_tag(value, :class => "btn #{key}") }.inject {|output, button_html| output += " "; output += button_html }
+    content_tag(:div, class: "actions") do
+      options.collect { |key, value| button_tag(value, class: "btn #{key}") }.inject {|output, button_html| output += " "; output += button_html }
     end
   end
 
@@ -35,8 +35,8 @@ module ApplicationHelper
           when 'notice' then 'success'
           else key
           end
-    content_tag(:div, :class => "alert-message #{key}") do
-      link_to("x", "#", :class => "close") + content_tag(:p, content_tag(:strong, value))
+    content_tag(:div, class: "alert-message #{key}") do
+      link_to("x", "#", class: "close") + content_tag(:p, content_tag(:strong, value))
     end
   end
 

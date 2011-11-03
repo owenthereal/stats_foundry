@@ -15,7 +15,7 @@ module StatementParser
         values = Column.convert_data_types(values)
         row_data = hash_from_pairs(keys, values)
 
-        Statement::InsertRow.new(:table_id => table_id, :row_data => row_data)
+        Statement::InsertRow.new(table_id: table_id, row_data: row_data)
       end
 
       private

@@ -32,7 +32,7 @@ class Query
 
     def validate_table_exists
       table_id = @match[1].to_i
-      @table = Table.with_columns.first(:conditions => { :id => table_id } )
+      @table = Table.with_columns.first(conditions: { id: table_id } )
       unless @table.present?
         errors << "Table with id #{table_id} does not exist."
         return false

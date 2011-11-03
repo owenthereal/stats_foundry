@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe TablesController, :broken => true do
+describe TablesController, broken: true do
 
   # This should return the minimal set of attributes required to create a valid
   # Table. As you add validations to Table, be sure to
@@ -38,7 +38,7 @@ describe TablesController, :broken => true do
   describe "GET show" do
     it "assigns the requested table as @table" do
       table = Table.create! valid_attributes
-      get :show, :id => table.id.to_s
+      get :show, id: table.id.to_s
       assigns(:table).should eq(table)
     end
   end
@@ -53,7 +53,7 @@ describe TablesController, :broken => true do
   describe "GET edit" do
     it "assigns the requested table as @table" do
       table = Table.create! valid_attributes
-      get :edit, :id => table.id.to_s
+      get :edit, id: table.id.to_s
       assigns(:table).should eq(table)
     end
   end
@@ -62,18 +62,18 @@ describe TablesController, :broken => true do
     describe "with valid params" do
       it "creates a new Table" do
         expect {
-          post :create, :table => valid_attributes
+          post :create, table: valid_attributes
         }.to change(Table, :count).by(1)
       end
 
       it "assigns a newly created table as @table" do
-        post :create, :table => valid_attributes
+        post :create, table: valid_attributes
         assigns(:table).should be_a(Table)
         assigns(:table).should be_persisted
       end
 
       it "redirects to the created table" do
-        post :create, :table => valid_attributes
+        post :create, table: valid_attributes
         response.should redirect_to(Table.last)
       end
     end
@@ -82,14 +82,14 @@ describe TablesController, :broken => true do
       it "assigns a newly created but unsaved table as @table" do
         # Trigger the behavior that occurs when invalid params are submitted
         Table.any_instance.stub(:save).and_return(false)
-        post :create, :table => {}
+        post :create, table: {}
         assigns(:table).should be_a_new(Table)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Table.any_instance.stub(:save).and_return(false)
-        post :create, :table => {}
+        post :create, table: {}
         response.should render_template("new")
       end
     end
@@ -104,18 +104,18 @@ describe TablesController, :broken => true do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Table.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => table.id, :table => {'these' => 'params'}
+        put :update, id: table.id, table: {'these' => 'params'}
       end
 
       it "assigns the requested table as @table" do
         table = Table.create! valid_attributes
-        put :update, :id => table.id, :table => valid_attributes
+        put :update, id: table.id, table: valid_attributes
         assigns(:table).should eq(table)
       end
 
       it "redirects to the table" do
         table = Table.create! valid_attributes
-        put :update, :id => table.id, :table => valid_attributes
+        put :update, id: table.id, table: valid_attributes
         response.should redirect_to(table)
       end
     end
@@ -125,7 +125,7 @@ describe TablesController, :broken => true do
         table = Table.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Table.any_instance.stub(:save).and_return(false)
-        put :update, :id => table.id.to_s, :table => {}
+        put :update, id: table.id.to_s, table: {}
         assigns(:table).should eq(table)
       end
 
@@ -133,7 +133,7 @@ describe TablesController, :broken => true do
         table = Table.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Table.any_instance.stub(:save).and_return(false)
-        put :update, :id => table.id.to_s, :table => {}
+        put :update, id: table.id.to_s, table: {}
         response.should render_template("edit")
       end
     end
@@ -143,13 +143,13 @@ describe TablesController, :broken => true do
     it "destroys the requested table" do
       table = Table.create! valid_attributes
       expect {
-        delete :destroy, :id => table.id.to_s
+        delete :destroy, id: table.id.to_s
       }.to change(Table, :count).by(-1)
     end
 
     it "redirects to the tables list" do
       table = Table.create! valid_attributes
-      delete :destroy, :id => table.id.to_s
+      delete :destroy, id: table.id.to_s
       response.should redirect_to(tables_url)
     end
   end

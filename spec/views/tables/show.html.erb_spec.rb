@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "tables/show.html.erb" do
   before(:each) do
     @table = assign(:table, stub_model(Table,
-      :name => "Name"
+      name: "Name"
     ))
   end
 
