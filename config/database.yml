@@ -1,5 +1,6 @@
 development: &default
   adapter: postgresql
+  host: localhost
   database: statsfoundry_development
   encoding: unicode
   username:
